@@ -1,4 +1,4 @@
-package main
+package fight
 
 // Type Fight
 // Models fights between individual Dwaynes, outputting winners, losers and drawers

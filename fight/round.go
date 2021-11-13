@@ -1,4 +1,4 @@
-package main
+package fight
 
 // Models an entire round of Dwayne fights
 // including:
