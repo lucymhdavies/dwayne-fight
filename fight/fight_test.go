@@ -7,9 +7,9 @@ import (
 )
 
 func TestFight(t *testing.T) {
-	dwayneTheRock := NewDwayne(Rock)
-	dwayneThePaper := NewDwayne(Paper)
-	dwayneTheScissors := NewDwayne(Scissors)
+	dwayneTheRock := NewNamedDwayne(Rock, "R")
+	dwayneThePaper := NewNamedDwayne(Paper, "P")
+	dwayneTheScissors := NewNamedDwayne(Scissors, "S")
 
 	var tests = []struct {
 		a, b *Dwayne

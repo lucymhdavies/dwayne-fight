@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	// TODO: Pull config from config file
 	fight.NewEvent().Start()
 }

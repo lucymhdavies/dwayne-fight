@@ -22,9 +22,11 @@ func (fr FightResult) String() string {
 }
 
 func Fight(A, B *Dwayne) FightResult {
+	fmt.Printf("Fight: %v vs %v", A, B)
 	result := A.Fight(B)
 
 	if result == Win {
+		fmt.Printf(" - Winner: %v\n", A)
 		return FightResult{
 			A,
 			B,
@@ -33,6 +35,7 @@ func Fight(A, B *Dwayne) FightResult {
 	}
 
 	if result == Loss {
+		fmt.Printf(" - Winner: %v\n", B)
 		return FightResult{
 			B,
 			A,
@@ -40,6 +43,7 @@ func Fight(A, B *Dwayne) FightResult {
 		}
 	}
 
+	fmt.Printf(" - Draw\n")
 	return FightResult{
 		nil,
 		nil,

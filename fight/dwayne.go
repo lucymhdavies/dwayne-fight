@@ -5,18 +5,27 @@ import "fmt"
 // Dwayne is our fighter
 type Dwayne struct {
 	species Species
+	name    string
 	// TODO: fight history
-	// TODO: name
 }
 
 func (d Dwayne) String() string {
-	return fmt.Sprintf("Dwayne \"The %v\" Johnson", d.species)
+	return d.name
 }
 
 // NewDwayne returns a pointer to a new Dwayne
 func NewDwayne(s Species) *Dwayne {
 	return &Dwayne{
 		species: s,
+		name:    fmt.Sprintf("Dwayne \"The %v\" Johnson", s),
+	}
+}
+
+// NewNamedDwayne returns a pointer to a new Dwayne
+func NewNamedDwayne(s Species, n string) *Dwayne {
+	return &Dwayne{
+		species: s,
+		name:    n,
 	}
 }
 
