@@ -6,6 +6,7 @@ import (
 )
 
 func TestDwayneFight(t *testing.T) {
+
 	dwayneTheRock := NewNamedDwayne(Rock, "R")
 	dwayneThePaper := NewNamedDwayne(Paper, "P")
 	dwayneTheScissors := NewNamedDwayne(Scissors, "S")

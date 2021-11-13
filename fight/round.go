@@ -4,11 +4,14 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type Round struct {
 	participants []*Dwayne
 	shuffle      bool
+	number       int
 }
 
 type RoundResult struct {
@@ -29,10 +32,18 @@ func NewRound(ps []*Dwayne) *Round {
 	}
 }
 
-func (r Round) Fights() RoundResult {
-	fmt.Println("====================")
-	fmt.Printf("Round: %v\n", r.participants)
-	fmt.Println("====================")
+func NewNumberedRound(ps []*Dwayne, number int) *Round {
+	rand.Seed(time.Now().UnixNano())
+
+	return &Round{
+		participants: ps,
+		shuffle:      true,
+		number:       number,
+	}
+}
+
+func (r Round) Fights() *RoundResult {
+	log.Infof("Round %d: %v", r.number, r.participants)
 
 	winners := []*Dwayne{}
 	losers := []*Dwayne{}
@@ -44,7 +55,7 @@ func (r Round) Fights() RoundResult {
 	for len(r.participants) > 0 {
 		// If there is only 1 dwayne, he has nobody to fight, so loses
 		if len(r.participants) == 1 {
-			fmt.Printf("%v has nobody to fight\n", r.participants[0])
+			log.Debugf("%v has nobody to fight", r.participants[0])
 			losers = append(losers, r.participants[0])
 			r.participants = []*Dwayne{}
 			continue
@@ -66,7 +77,7 @@ func (r Round) Fights() RoundResult {
 		}
 		if allSameSpecies {
 			losers = append(losers, r.participants...)
-			fmt.Printf("All remaining participants %v same species\n",
+			log.Debugf("All remaining participants %v same species\n",
 				r.participants)
 			r.participants = []*Dwayne{}
 			continue
@@ -118,7 +129,7 @@ func (r Round) Fights() RoundResult {
 		winners,
 		losers,
 	}
-	fmt.Printf("Results: %v\n", results)
+	log.Infof("Round Results: %v", results)
 
-	return results
+	return &results
 }

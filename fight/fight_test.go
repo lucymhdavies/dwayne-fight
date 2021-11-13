@@ -4,9 +4,13 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+
+	log "github.com/sirupsen/logrus"
 )
 
 func TestFight(t *testing.T) {
+	log.SetLevel(log.DebugLevel)
+
 	dwayneTheRock := NewNamedDwayne(Rock, "R")
 	dwayneThePaper := NewNamedDwayne(Paper, "P")
 	dwayneTheScissors := NewNamedDwayne(Scissors, "S")

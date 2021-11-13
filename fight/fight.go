@@ -1,6 +1,10 @@
 package fight
 
-import "fmt"
+import (
+	"fmt"
+
+	log "github.com/sirupsen/logrus"
+)
 
 // Type Fight
 // Models fights between individual Dwaynes, outputting winners, losers and drawers
@@ -22,11 +26,12 @@ func (fr FightResult) String() string {
 }
 
 func Fight(A, B *Dwayne) FightResult {
-	fmt.Printf("Fight: %v vs %v", A, B)
+
 	result := A.Fight(B)
 
 	if result == Win {
-		fmt.Printf(" - Winner: %v\n", A)
+
+		log.Debugf("Fight: %v vs %v - Winner: %v", A, B, A)
 		return FightResult{
 			A,
 			B,
@@ -35,7 +40,7 @@ func Fight(A, B *Dwayne) FightResult {
 	}
 
 	if result == Loss {
-		fmt.Printf(" - Winner: %v\n", B)
+		log.Debugf("Fight: %v vs %v - Winner: %v", A, B, B)
 		return FightResult{
 			B,
 			A,
@@ -43,7 +48,7 @@ func Fight(A, B *Dwayne) FightResult {
 		}
 	}
 
-	fmt.Printf(" - Draw\n")
+	log.Debugf("Fight: %v vs %v - Draw", A, B)
 	return FightResult{
 		nil,
 		nil,
