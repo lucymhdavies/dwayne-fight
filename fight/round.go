@@ -42,7 +42,7 @@ func NewNumberedRound(ps []*Dwayne, number int) *Round {
 	}
 }
 
-func (r Round) Fights() *RoundResult {
+func (r Round) Fights() RoundResult {
 	log.Infof("Round %d: %v", r.number, r.participants)
 
 	winners := []*Dwayne{}
@@ -131,5 +131,5 @@ func (r Round) Fights() *RoundResult {
 	}
 	log.Infof("Round Results: %v", results)
 
-	return &results
+	return results
 }
