@@ -6,19 +6,23 @@ import (
 )
 
 func TestDwayneFight(t *testing.T) {
+	dwayneTheRock := NewDwayne(Rock)
+	dwayneThePaper := NewDwayne(Paper)
+	dwayneTheScissors := NewDwayne(Scissors)
+
 	var tests = []struct {
 		a, b *Dwayne
 		want Result
 	}{
-		{NewDwayne(Rock), NewDwayne(Rock), Draw},
-		{NewDwayne(Rock), NewDwayne(Paper), Loss},
-		{NewDwayne(Rock), NewDwayne(Scissors), Win},
-		{NewDwayne(Paper), NewDwayne(Rock), Win},
-		{NewDwayne(Paper), NewDwayne(Paper), Draw},
-		{NewDwayne(Paper), NewDwayne(Scissors), Loss},
-		{NewDwayne(Scissors), NewDwayne(Rock), Loss},
-		{NewDwayne(Scissors), NewDwayne(Paper), Win},
-		{NewDwayne(Scissors), NewDwayne(Scissors), Draw},
+		{dwayneTheRock, dwayneTheRock, Draw},
+		{dwayneTheRock, dwayneThePaper, Loss},
+		{dwayneTheRock, dwayneTheScissors, Win},
+		{dwayneThePaper, dwayneTheRock, Win},
+		{dwayneThePaper, dwayneThePaper, Draw},
+		{dwayneThePaper, dwayneTheScissors, Loss},
+		{dwayneTheScissors, dwayneTheRock, Loss},
+		{dwayneTheScissors, dwayneThePaper, Win},
+		{dwayneTheScissors, dwayneTheScissors, Draw},
 	}
 	for _, tt := range tests {
 		testname := fmt.Sprintf("%v vs %v", tt.a, tt.b)

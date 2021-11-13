@@ -52,5 +52,5 @@ func (d Dwayne) Fight(opponent *Dwayne) Result {
 	}
 
 	// Shouldn't happen, but if we have a mutant Dwayne species, it could happen
-	return 42
+	return -1
 }
