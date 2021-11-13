@@ -1,6 +1,8 @@
 package fight
 
 import (
+	"fmt"
+
 	log "github.com/sirupsen/logrus"
 )
 
@@ -63,6 +65,7 @@ func (e Event) Start() {
 	for !weHaveAWinner {
 		roundNum++
 		if roundNum > 50 {
+			// Prevent infinite loop from terrible code
 			log.Fatalf("Too Many Rounds!")
 		}
 
@@ -72,6 +75,7 @@ func (e Event) Start() {
 		if len(results.winners) == 0 {
 			weHaveAWinner = true
 			log.Infof("Nobody Won!")
+			fmt.Printf("%v, %v,\n", "Nobody", roundNum)
 		} else {
 			e.participants = results.winners
 		}
@@ -79,6 +83,7 @@ func (e Event) Start() {
 		if len(results.winners) == 1 {
 			weHaveAWinner = true
 			log.Infof("Event Winner: %v", results.winners[0])
+			fmt.Printf("%v, %v,\n", results.winners[0].species, roundNum)
 		} else {
 			e.participants = results.winners
 		}
